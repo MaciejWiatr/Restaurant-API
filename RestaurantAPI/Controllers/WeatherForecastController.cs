@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 
 namespace RestaurantAPI.Controllers
@@ -18,13 +17,6 @@ namespace RestaurantAPI.Controllers
             _service = service;
         }
 
-        //[HttpGet]
-        //public IEnumerable<WeatherForecast> Get()
-        //{
-        //    var result = _service.Get();
-        //    return result;
-        //}
-
         [HttpGet("currentDay/{max}")]
         public string GetCurrentDay([FromQuery] int take, [FromRoute] int max)
         {
@@ -38,14 +30,13 @@ namespace RestaurantAPI.Controllers
         }
 
         [HttpPost("generate")]
-        public ActionResult<IEnumerable<WeatherForecast>> Generate([FromQuery] int count, [FromBody] Temperature request)
+        public ActionResult<IEnumerable<WeatherForecast>> Generate([FromQuery] int count, [FromBody] TemperatureRequest request)
         {
             if (count < 0 || request.Max < request.Min)
             {
                 return BadRequest();
             }
-
-            Console.WriteLine($"{request.Max} {request.Min}");
+            _logger.LogDebug("Test");
             return Ok(_service.Get(count, request.Min, request.Max));
         }
     }
