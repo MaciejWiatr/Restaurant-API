@@ -13,7 +13,7 @@ namespace RestaurantAPI.Entities
         public string ContactEmail { get; set; }
         public string ContactNumber { get; set; }
         public string AddressId { get; set; }
-        public virtual Adress Adress { get; set; }
+        public virtual Address Address { get; set; }
         public virtual List<Dish> Dishes { get; set; }
     }
 }
