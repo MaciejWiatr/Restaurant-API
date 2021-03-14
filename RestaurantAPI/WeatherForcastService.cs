@@ -11,6 +11,14 @@ namespace RestaurantAPI
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
+
+        /// <summary>
+        ///     Get IEnumerable of random weather forecasts
+        /// </summary>
+        /// <param name="count">Number of forecasts function should return</param>
+        /// <param name="minTemp">Minimal generated temperature</param>
+        /// <param name="maxTemp">Maximal generated temperature</param>
+        /// <returns> IEnumerable of WeatherForecast </returns>
         public IEnumerable<WeatherForecast> Get(int count, int minTemp, int maxTemp)
         {
             var rng = new Random();
