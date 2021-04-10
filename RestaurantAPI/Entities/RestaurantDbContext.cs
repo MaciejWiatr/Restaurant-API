@@ -5,7 +5,7 @@ namespace RestaurantAPI.Entities
 {
     public class RestaurantDbContext : DbContext
     {
-        private readonly string _connectionString =
+        private const string ConnectionString =
             "Server=(localdb)\\mssqllocaldb;Database=RestaurantDb;Trusted_Connection=True";
         
         public DbSet<Restaurant> Restaurants { get; set; }
@@ -23,7 +23,7 @@ namespace RestaurantAPI.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_connectionString);
+            optionsBuilder.UseSqlServer(ConnectionString);
             // try
             // {
             //     optionsBuilder.UseMySQL("server=localhost;database=restaurantapi;user=root");
