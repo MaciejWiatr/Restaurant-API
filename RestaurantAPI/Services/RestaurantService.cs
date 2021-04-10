@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RestaurantAPI.Entities;
-using RestaurantAPI.Entities.Exceptions;
+using RestaurantAPI.Exceptions;
 using RestaurantAPI.Models;
 using System.Collections.Generic;
 using System.Linq;
