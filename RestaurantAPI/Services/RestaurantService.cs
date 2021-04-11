@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RestaurantAPI.Entities;
@@ -6,6 +7,7 @@ using RestaurantAPI.Exceptions;
 using RestaurantAPI.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace RestaurantAPI.Services
 {
@@ -45,7 +47,6 @@ namespace RestaurantAPI.Services
         {
             var restaurants = _dbContext.Restaurants.Include(r => r.Address).Include(r => r.Dishes).ToList();
             var restaurantsDtos = _mapper.Map<List<RestaurantDto>>(restaurants);
-
             return restaurantsDtos;
         }
 

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using RestaurantAPI.Exceptions;
 using RestaurantAPI.Models;
 using System;
@@ -22,6 +21,11 @@ namespace RestaurantAPI.Middleware
             try
             {
                 await next.Invoke(context);
+            }
+            catch (BadRequestException badRequestException)
+            {
+                context.Response.StatusCode = 400;
+                await context.Response.WriteAsJsonAsync(new ResponseErrorDto(badRequestException));
             }
             catch (NotFoundException notFoundException)
             {
